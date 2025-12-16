@@ -2,88 +2,113 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>ออย & โฟวิน 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เว็บความทรงจำของเรา 💕</title>
 
-<!-- ฟอนต์น่ารัก -->
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Kodchasan:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  height: 100vh;
-  background: linear-gradient(180deg, #fff1f5, #ffe4ec);
-  font-family: 'Itim', cursive;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff1f5, #ffe6ef);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Itim', cursive;
   overflow: hidden;
 }
 
+/* กล่องหลัก */
 .card {
-  background: rgba(255,255,255,0.85);
-  padding: 40px;
+  background: rgba(255,255,255,0.9);
+  padding: 35px 30px;
   border-radius: 35px;
+  width: 90%;
+  max-width: 380px;
   text-align: center;
-  width: 320px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
   z-index: 2;
 }
 
 h1 {
+  margin: 0;
   color: #e07a9a;
-  margin-bottom: 5px;
+  font-size: 26px;
 }
 
-p {
+.subtitle {
+  margin-top: 8px;
   color: #7a5c5c;
   font-size: 15px;
 }
 
-input {
-  width: 80%;
+/* ช่องรหัส */
+.pass-box {
+  margin: 20px auto;
   padding: 12px;
   border-radius: 25px;
-  border: 2px solid #f8b6c8;
-  font-size: 16px;
-  margin-top: 15px;
-  text-align: center;
-  font-family: 'Itim', cursive;
+  border: 2px dashed #f5a7bf;
+  width: 100%;
+  font-size: 20px;
+  letter-spacing: 8px;
+  background: #fff;
+  color: #555;
 }
 
-button {
+/* ปุ่มตัวเลข */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.keypad button {
+  padding: 14px 0;
+  font-size: 18px;
+  border-radius: 18px;
+  border: none;
+  background: #f8b6c8;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Kodchasan', sans-serif;
+}
+
+.keypad button:hover {
+  background: #ec7fa3;
+}
+
+.action {
   margin-top: 18px;
+}
+
+.action button {
   padding: 12px 30px;
   border-radius: 30px;
   border: none;
   background: #f48fb1;
-  color: white;
+  color: #fff;
   font-size: 16px;
   cursor: pointer;
-  font-family: 'Itim', cursive;
-}
-
-button:hover {
-  background: #ec729c;
 }
 
 /* หัวใจลอย */
 .heart {
   position: absolute;
   bottom: -20px;
-  font-size: 20px;
-  animation: floatUp 6s linear infinite;
-  opacity: 0.7;
+  font-size: 22px;
+  animation: floatUp linear infinite;
+  opacity: 0.8;
 }
 
 @keyframes floatUp {
-  0% {
-    transform: translateY(0);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
 }
 </style>
 </head>
@@ -91,36 +116,72 @@ button:hover {
 <body>
 
 <div class="card">
-  <h1>ออย & โฟวิน 💖</h1>
-  <p>เว็บความทรงจำของเรา</p>
+  <h1>เว็บความทรงจำของเรา ♡</h1>
+  <div class="subtitle">ออย & โฟวิน</div>
 
-  <input type="password" id="pass" placeholder="ใส่รหัสลับของเรา">
-  <br>
-  <button onclick="check()">เข้าสู่โลกของเรา</button>
+  <div id="display" class="pass-box">••••••</div>
+
+  <div class="keypad">
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button onclick="clearPass()">⌫</button>
+    <button onclick="add('0')">0</button>
+    <button onclick="check()">♡</button>
+  </div>
+
+  <div class="action">
+    <button onclick="check()">เข้าสู่เว็บ</button>
+  </div>
 </div>
 
 <script>
-function check() {
-  if (document.getElementById("pass").value === "20122566") {
-    window.location.href = "home.html";
-  } else {
-    alert("รหัสไม่ถูกต้องนะ 💔");
+let password = "";
+const correct = "20122566";
+
+function add(num) {
+  if (password.length < 8) {
+    password += num;
+    update();
   }
 }
 
-// สร้างหัวใจลอย
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "💗";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-  document.body.appendChild(heart);
+function clearPass() {
+  password = password.slice(0, -1);
+  update();
+}
 
-  setTimeout(() => {
-    heart.remove();
-  }, 7000);
-}, 400);
+function update() {
+  document.getElementById("display").textContent =
+    "•".repeat(password.length) + " ".repeat(8 - password.length);
+}
+
+function check() {
+  if (password === correct) {
+    window.location.href = "home.html";
+  } else {
+    alert("รหัสไม่ถูกต้องนะ 💔");
+    password = "";
+    update();
+  }
+}
+
+/* หัวใจลอย */
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💗";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (4 + Math.random() * 4) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 8000);
+}, 450);
 </script>
 
 </body>
