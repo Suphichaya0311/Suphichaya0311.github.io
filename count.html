@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>เวลาที่เราคบกัน</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>⏳ เราคบกันมาแล้วนะ</h2>
+<div class="box" id="time"></div>
+
+<script>
+const start = new Date("2023-12-20");
+const now = new Date();
+const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+document.getElementById("time").innerHTML =
+  diff + " วันแล้วนะ 🤍";
+</script>
+
+<a href="home.html">⬅ กลับหน้าเมนู</a>
+
+</body>
+</html>
