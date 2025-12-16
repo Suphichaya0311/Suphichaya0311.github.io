@@ -1,0 +1,49 @@
+body {
+  background: #fff1f5;
+  font-family: "Tahoma";
+  text-align: center;
+  color: #6b4f4f;
+}
+
+.center {
+  margin-top: 120px;
+}
+
+input, textarea {
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  width: 260px;
+  font-size: 16px;
+}
+
+textarea {
+  height: 150px;
+}
+
+button {
+  padding: 12px 28px;
+  border-radius: 25px;
+  border: none;
+  background: #f8a1c4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #f48fb1;
+}
+
+.menu a {
+  display: block;
+  margin: 15px auto;
+  background: white;
+  width: 280px;
+  padding: 14px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #6b4f4f;
+  font-size: 17px;
+}
