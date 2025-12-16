@@ -1,29 +1,126 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>เว็บของออย & โฟวิน</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>ออย & โฟวิน 💕</title>
+
+<!-- ฟอนต์น่ารัก -->
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #fff1f5, #ffe4ec);
+  font-family: 'Itim', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.85);
+  padding: 40px;
+  border-radius: 35px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+h1 {
+  color: #e07a9a;
+  margin-bottom: 5px;
+}
+
+p {
+  color: #7a5c5c;
+  font-size: 15px;
+}
+
+input {
+  width: 80%;
+  padding: 12px;
+  border-radius: 25px;
+  border: 2px solid #f8b6c8;
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+  font-family: 'Itim', cursive;
+}
+
+button {
+  margin-top: 18px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: #f48fb1;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Itim', cursive;
+}
+
+button:hover {
+  background: #ec729c;
+}
+
+/* หัวใจลอย */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<div class="center">
-  <h2>เว็บความทรงจำของเรา 🤍</h2>
-  <p>ออย & โฟวิน</p>
+<div class="card">
+  <h1>ออย & โฟวิน 💖</h1>
+  <p>เว็บความทรงจำของเรา</p>
 
-  <input type="password" id="pass" placeholder="ใส่รหัสลับ">
+  <input type="password" id="pass" placeholder="ใส่รหัสลับของเรา">
   <br>
-  <button onclick="check()">เข้าสู่เว็บ</button>
+  <button onclick="check()">เข้าสู่โลกของเรา</button>
 </div>
 
 <script>
 function check() {
-  if (document.getElementById("pass").value === "06122566") {
-    window.location = "home.html";
+  if (document.getElementById("pass").value === "20122566") {
+    window.location.href = "home.html";
   } else {
-    alert("รหัสไม่ถูกต้องนะ");
+    alert("รหัสไม่ถูกต้องนะ 💔");
   }
 }
+
+// สร้างหัวใจลอย
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+}, 400);
 </script>
 
 </body>
