@@ -1,122 +1,29 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>ออย & โฟวิน 🤍</title>
-
-<style>
-body{
-    margin:0;
-    font-family: 'Prompt', sans-serif;
-    background:#fff3f6;
-    color:#5a3a42;
-    text-align:center;
-}
-.page{
-    padding:80px 20px;
-}
-.hidden{
-    display:none;
-}
-button{
-    background:#f6a5c0;
-    border:none;
-    padding:14px 30px;
-    border-radius:30px;
-    font-size:16px;
-    color:white;
-    cursor:pointer;
-}
-input{
-    padding:12px;
-    border-radius:20px;
-    border:none;
-    width:200px;
-    text-align:center;
-}
-.gift{
-    width:220px;
-    margin:20px 0;
-}
-.card{
-    background:white;
-    max-width:500px;
-    margin:auto;
-    padding:30px;
-    border-radius:25px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>เว็บของออย & โฟวิน</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- หน้าใส่รหัส -->
-<div id="passwordPage" class="page">
-    <h2>เว็บความทรงจำของเรา 🤍</h2>
-    <p>ออย & โฟวิน</p>
-    <input type="password" id="password" placeholder="ใส่รหัสลับ">
-    <br><br>
-    <button onclick="checkPassword()">เข้าสู่เว็บ</button>
-</div>
+<div class="center">
+  <h2>เว็บความทรงจำของเรา 🤍</h2>
+  <p>ออย & โฟวิน</p>
 
-<!-- หน้าเปิดกล่อง -->
-<div id="homePage" class="page hidden">
-    <h2>สุขสันต์วันครบรอบ 2 ปี</h2>
-    <h3>ออย & โฟวิน 🤍</h3>
-    <img class="gift" src="https://i.imgur.com/4M7IWwP.png">
-    <p>กดเพื่อเปิดความทรงจำของเรา</p>
-    <button onclick="goToTime()">เปิดกล่อง</button>
-</div>
-
-<!-- หน้านับเวลา -->
-<div id="timePage" class="page hidden">
-    <h2>เราอยู่ด้วยกันมาแล้ว 🤍</h2>
-    <h1 id="counter"></h1>
-    <p>ตั้งแต่ 20 ธันวาคม 2566</p>
-    <button onclick="goToCard()">อ่านการ์ดอวยพร</button>
-</div>
-
-<!-- หน้าการ์ด -->
-<div id="cardPage" class="page hidden">
-    <div class="card">
-        <h2>ถึงโฟวิน 🤍</h2>
-        <p>
-            ขอบคุณที่อยู่ข้างกันมาตลอด 2 ปี  
-            ถึงจะทะเลาะกันบ้าง แต่ก็ผ่านมาได้จนถึงทุกวันนี้
-            ถึงบ้างครั้งออยจะทำตัวไม่น่ารักเเต่เธอก็ยังใจเย็นและรักออยมาตลอด
-            เธอก็น่ารักกับออยมาตลอดตั้งแต่วันแรกจนถึงทุกวันนี้ อยากมีเธอไปตลอดเลย 
-            อยากจะบอกว่ารักพี่โฟวินมากเลยนะ ขอให้เรารักกันแบบนี้ไปนานๆ🤍
-        </p>
-    </div>
+  <input type="password" id="pass" placeholder="ใส่รหัสลับ">
+  <br>
+  <button onclick="check()">เข้าสู่เว็บ</button>
 </div>
 
 <script>
-function checkPassword(){
-    if(document.getElementById("password").value === "201266"){
-        passwordPage.classList.add("hidden");
-        homePage.classList.remove("hidden");
-    }else{
-        alert("รหัสไม่ถูกต้องนะ 🤍");
-    }
+function check() {
+  if (document.getElementById("pass").value === "06122566") {
+    window.location = "home.html";
+  } else {
+    alert("รหัสไม่ถูกต้องนะ");
+  }
 }
-
-function goToTime(){
-    homePage.classList.add("hidden");
-    timePage.classList.remove("hidden");
-}
-
-function goToCard(){
-    timePage.classList.add("hidden");
-    cardPage.classList.remove("hidden");
-}
-
-// นับวัน
-const startDate = new Date("2023-12-20");
-setInterval(()=>{
-    const now = new Date();
-    const diff = Math.floor((now - startDate)/(1000*60*60*24));
-    document.getElementById("counter").innerText = diff + " วัน";
-},1000);
 </script>
 
 </body>
