@@ -2,21 +2,168 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>ความทรงจำ</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ความทรงจำของเรา</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Itim',cursive;
+  background:linear-gradient(180deg,#fff1f6,#ffe6ef);
+  color:#7a4a5a;
+  overflow:hidden;
+}
+
+/* กลิตเตอร์ */
+.sparkle{
+  position:fixed;
+  top:-10px;
+  width:6px;
+  height:6px;
+  background:rgba(255,255,255,.9);
+  border-radius:50%;
+  animation:fall 8s linear infinite;
+  z-index:1;
+}
+@keyframes fall{to{transform:translateY(120vh)}}
+
+/* หัวใจลอย */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  color:#ff8fb1;
+  animation:up 6s linear infinite;
+  z-index:1;
+}
+@keyframes up{to{transform:translateY(-120vh)}}
+
+/* กล่อง */
+.wrap{
+  min-height:100vh;
+  padding:30px 15px;
+  position:relative;
+  z-index:2;
+}
+.card{
+  background:rgba(255,255,255,.95);
+  border-radius:40px;
+  padding:30px;
+  max-width:1000px;
+  margin:auto;
+  box-shadow:0 30px 60px rgba(255,160,190,.45);
+}
+
+/* หัวข้อ */
+h1{text-align:center;margin-top:0}
+.sub{text-align:center;color:#8b5a6a;margin-bottom:25px}
+
+/* slider */
+.slider{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  gap:20px;
+  padding-bottom:10px;
+}
+.slider::-webkit-scrollbar{display:none}
+
+.slide{
+  min-width:260px;
+  scroll-snap-align:center;
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+.slide img{
+  width:100%;
+  border-radius:30px;
+  box-shadow:0 20px 40px rgba(255,150,190,.4);
+}
+
+/* ข้อความท้าย */
+.msg{
+  margin-top:25px;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+}
+</style>
 </head>
+
 <body>
 
-<h2>🖼️ ความทรงจำของเรา</h2>
-<p>ออยสามารถใส่รูปทีหลังได้เลย</p>
+<script>
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDelay=Math.random()*8+"s";
+  document.body.appendChild(s);
 
-<div class="box">
-  <p>📷 รูปที่ 1</p>
-  <p>📷 รูปที่ 2</p>
-  <p>📷 รูปที่ 3</p>
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=4+Math.random()*4+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="wrap">
+  <div class="card">
+    <h1>ภาพที่เก็บหัวใจของเราไว้ทั้งหมด 📷</h1>
+    <div class="sub">บางรูปทำให้ยิ้ม บางรูปทำให้คิดถึง</div>
+
+    <div class="slider">
+      <!-- 🖼️ รูป 30 รูป -->
+      <div class="slide"><img src="gallery1.jpg"></div>
+      <div class="slide"><img src="gallery2.jpg"></div>
+      <div class="slide"><img src="gallery3.jpg"></div>
+      <div class="slide"><img src="gallery4.jpg"></div>
+      <div class="slide"><img src="gallery5.jpg"></div>
+      <div class="slide"><img src="gallery6.jpg"></div>
+      <div class="slide"><img src="gallery7.jpg"></div>
+      <div class="slide"><img src="gallery8.jpg"></div>
+      <div class="slide"><img src="gallery9.jpg"></div>
+      <div class="slide"><img src="gallery10.jpg"></div>
+
+      <div class="slide"><img src="gallery11.jpg"></div>
+      <div class="slide"><img src="gallery12.jpg"></div>
+      <div class="slide"><img src="gallery13.jpg"></div>
+      <div class="slide"><img src="gallery14.jpg"></div>
+      <div class="slide"><img src="gallery15.jpg"></div>
+      <div class="slide"><img src="gallery16.jpg"></div>
+      <div class="slide"><img src="gallery17.jpg"></div>
+      <div class="slide"><img src="gallery18.jpg"></div>
+      <div class="slide"><img src="gallery19.jpg"></div>
+      <div class="slide"><img src="gallery20.jpg"></div>
+
+      <div class="slide"><img src="gallery21.jpg"></div>
+      <div class="slide"><img src="gallery22.jpg"></div>
+      <div class="slide"><img src="gallery23.jpg"></div>
+      <div class="slide"><img src="gallery24.jpg"></div>
+      <div class="slide"><img src="gallery25.jpg"></div>
+      <div class="slide"><img src="gallery26.jpg"></div>
+      <div class="slide"><img src="gallery27.jpg"></div>
+      <div class="slide"><img src="gallery28.jpg"></div>
+      <div class="slide"><img src="gallery29.jpg"></div>
+      <div class="slide"><img src="gallery30.jpg"></div>
+    </div>
+
+    <div class="msg">
+      ทุกภาพคือช่วงเวลาที่เราเลือกเก็บไว้<br>
+      ไม่ใช่เพราะมันสมบูรณ์แบบ<br>
+      แต่เพราะมันคือ “เรา” 🤍
+    </div>
+  </div>
 </div>
-
-<a href="home.html">⬅ กลับหน้าเมนู</a>
 
 </body>
 </html>
