@@ -1,24 +1,198 @@
-<link rel="stylesheet" href="style.css">
-<div class="center">
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เวลาของเรา</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Itim',cursive;
+  background:linear-gradient(180deg,#fff1f6,#ffe6ef);
+  color:#7a4a5a;
+  overflow:hidden;
+}
+
+/* กลิตเตอร์ */
+.sparkle{
+  position:fixed;
+  top:-10px;
+  width:6px;
+  height:6px;
+  background:rgba(255,255,255,.9);
+  border-radius:50%;
+  animation:fall 8s linear infinite;
+  z-index:1;
+}
+@keyframes fall{
+  to{transform:translateY(120vh)}
+}
+
+/* หัวใจลอย */
+.heart-float{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  color:#ff8fb1;
+  animation:up 6s linear infinite;
+  z-index:1;
+}
+@keyframes up{
+  to{transform:translateY(-120vh)}
+}
+
+/* กล่องหลัก */
+.wrap{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+.card{
+  background:rgba(255,255,255,.95);
+  border-radius:40px;
+  padding:35px 30px;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(255,160,190,.45);
+}
+
+/* หัวข้อ */
+h1{
+  margin:0;
+  font-size:30px;
+}
+.sub{
+  margin-top:6px;
+  font-size:17px;
+  color:#8b5a6a;
+}
+
+/* เวลา */
+.time-box{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:25px 0;
+}
+.unit{
+  background:#fff;
+  border-radius:25px;
+  padding:15px 10px;
+  box-shadow:0 10px 25px rgba(255,170,200,.35);
+}
+.num{
+  font-size:30px;
+  color:#ff7fa8;
+}
+.label{
+  font-size:14px;
+}
+
+/* รูป */
+.photo{
+  margin-top:20px;
+}
+.photo img{
+  width:100%;
+  border-radius:25px;
+  box-shadow:0 20px 40px rgba(255,160,190,.4);
+}
+
+/* ข้อความซึ้ง */
+.msg{
+  margin-top:20px;
+  font-size:18px;
+  line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+/* สร้างกลิตเตอร์ + หัวใจ */
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDelay=Math.random()*8+"s";
+  document.body.appendChild(s);
+
+  let h=document.createElement("div");
+  h.className="heart-float";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=4+Math.random()*4+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="wrap">
   <div class="card">
-    <h2>เราคบกันมานานเท่าไหร่แล้วนะ</h2>
-    <p id="count"></p>
-    <img src="PUT_IMAGE.jpg" class="float" width="220">
-    <button onclick="back()">กลับ</button>
+    <h1>เวลาที่เราเดินมาด้วยกัน 💞</h1>
+    <div class="sub">ออย & โฟวิน — ตั้งแต่ 20 ธันวาคม 2566</div>
+
+    <div class="time-box">
+      <div class="unit"><div class="num" id="y">0</div><div class="label">ปี</div></div>
+      <div class="unit"><div class="num" id="m">0</div><div class="label">เดือน</div></div>
+      <div class="unit"><div class="num" id="d">0</div><div class="label">วัน</div></div>
+      <div class="unit"><div class="num" id="h">0</div><div class="label">ชั่วโมง</div></div>
+      <div class="unit"><div class="num" id="min">0</div><div class="label">นาที</div></div>
+      <div class="unit"><div class="num" id="s">0</div><div class="label">วินาที</div></div>
+    </div>
+
+    <div class="photo">
+      <!-- 🖼️ ใส่รูปความทรงจำ -->
+      <!-- เปลี่ยนชื่อไฟล์รูปได้ เช่น our.jpg -->
+      <img src="photo1.jpg" alt="ความทรงจำของเรา">
+    </div>
+
+    <div class="msg">
+      เวลานี้อาจดูเป็นตัวเลข<br>
+      แต่ทุกวินาทีคือความรักที่เราไม่เคยทิ้งกัน<br>
+      และพี่หวังว่ามันจะนับต่อไป…<br>
+      จนเราแก่ไปพร้อมกัน 🤍
+    </div>
   </div>
 </div>
 
 <script>
-setInterval(()=>{
-  let start=new Date("2023-12-20");
-  let now=new Date();
-  let diff=now-start;
-  let days=Math.floor(diff/86400000);
-  let y=Math.floor(days/365);
-  let m=Math.floor((days%365)/30);
-  let d=days%30;
-  let h=Math.floor((diff/3600000)%24);
-  count.innerText=`${y} ปี ${m} เดือน ${d} วัน ${h} ชั่วโมง`;
-},1000);
-function back(){location.href="home.html"}
+const start = new Date("2023-12-20T00:00:00");
+
+function update(){
+  const now = new Date();
+  let diff = Math.floor((now - start)/1000);
+
+  const y = Math.floor(diff / (365*24*3600));
+  diff %= 365*24*3600;
+  const m = Math.floor(diff / (30*24*3600));
+  diff %= 30*24*3600;
+  const d = Math.floor(diff / (24*3600));
+  diff %= 24*3600;
+  const h = Math.floor(diff / 3600);
+  diff %= 3600;
+  const min = Math.floor(diff / 60);
+  const s = diff % 60;
+
+  document.getElementById("y").textContent=y;
+  document.getElementById("m").textContent=m;
+  document.getElementById("d").textContent=d;
+  document.getElementById("h").textContent=h;
+  document.getElementById("min").textContent=min;
+  document.getElementById("s").textContent=s;
+}
+setInterval(update,1000);
+update();
 </script>
+
+</body>
+</html>
