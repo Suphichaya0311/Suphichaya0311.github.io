@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เว็บความทรงจำของเรา</title>
+<title>ออย & โฟวิน</title>
 
-<!-- ฟอนต์ -->
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 <style>
@@ -13,23 +12,38 @@
 body{
   margin:0;
   font-family:'Itim',cursive;
-  background:linear-gradient(180deg,#fff0f6,#ffe6ef);
+  background:linear-gradient(180deg,#fff1f6,#ffe6ef);
   overflow:hidden;
 }
 
-/* กลิตเตอร์ */
+/* กลิตเตอร์ลอยลง */
 .sparkle{
   position:fixed;
+  top:-10px;
   width:6px;
   height:6px;
-  background:rgba(255,182,193,.8);
+  background:rgba(255,255,255,.9);
   border-radius:50%;
-  animation:fall 6s linear infinite;
+  animation:fall 7s linear infinite;
+  z-index:1;
 }
 @keyframes fall{
-  0%{transform:translateY(-10vh);opacity:0}
-  30%{opacity:1}
-  100%{transform:translateY(110vh);opacity:0}
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
+}
+
+/* หัวใจลอยขึ้น */
+.float-heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  color:#ff8fb1;
+  animation:heartUp 6s linear infinite;
+  z-index:1;
+}
+@keyframes heartUp{
+  from{transform:translateY(0)}
+  to{transform:translateY(-120vh)}
 }
 
 /* กล่องหลัก */
@@ -39,35 +53,34 @@ body{
   justify-content:center;
   align-items:center;
   padding:20px;
+  position:relative;
+  z-index:2; /* สำคัญ: ให้ปุ่มอยู่บนของลอย */
 }
 .card{
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.92);
   padding:40px 30px;
-  border-radius:35px;
+  border-radius:40px;
   text-align:center;
   max-width:420px;
   width:100%;
-  box-shadow:0 30px 60px rgba(255,150,190,.45);
-  position:relative;
+  box-shadow:0 30px 60px rgba(255,160,190,.45);
 }
 
-/* หัวใจ */
+/* หัวใจตรงชื่อ */
 .heart{
-  font-size:32px;
+  font-size:34px;
   cursor:pointer;
   display:inline-block;
-  animation:float 3s ease-in-out infinite;
+  animation:pulse 2s infinite;
 }
-.heart.active{
-  transform:scale(1.6);
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
+.heart.active{transform:scale(1.7)}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
 }
 
 /* ข้อความ */
-h1{color:#7a4a5a;margin-bottom:5px}
+h1{color:#7a4a5a;margin-bottom:6px}
 p{color:#8b5a6a;margin-top:0}
 
 /* ช่องรหัส */
@@ -79,7 +92,6 @@ input{
   font-size:18px;
   text-align:center;
   margin-top:15px;
-  outline:none;
 }
 
 /* ปุ่ม */
@@ -100,14 +112,21 @@ button:hover{transform:scale(1.05)}
 
 <body>
 
-<!-- กลิตเตอร์ -->
+<!-- สร้างกลิตเตอร์ + หัวใจ -->
 <script>
-for(let i=0;i<40;i++){
+for(let i=0;i<35;i++){
   let s=document.createElement("div");
   s.className="sparkle";
   s.style.left=Math.random()*100+"vw";
-  s.style.animationDelay=Math.random()*6+"s";
+  s.style.animationDelay=Math.random()*7+"s";
   document.body.appendChild(s);
+
+  let h=document.createElement("div");
+  h.className="float-heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=4+Math.random()*4+"s";
+  document.body.appendChild(h);
 }
 </script>
 
@@ -128,7 +147,7 @@ document.querySelector(".heart").onclick=function(){
 }
 
 function login(){
-  if(pass.value==="06122566"){ // 🔑 เปลี่ยนรหัสตรงนี้
+  if(pass.value==="06122566"){   // 🔑 เปลี่ยนรหัสได้ตรงนี้
     window.location.href="home.html";
   }else{
     alert("รหัสนี้ยังไม่ใช่ของเรา 🤍");
