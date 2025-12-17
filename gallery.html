@@ -14,7 +14,7 @@ body{
   font-family:'Itim',cursive;
   background:linear-gradient(180deg,#fff1f6,#ffe6ef);
   color:#7a4a5a;
-  overflow:hidden;
+  overflow:hidden; /* กันพื้นหลังเลื่อน */
 }
 
 /* กลิตเตอร์ */
@@ -31,7 +31,7 @@ body{
 @keyframes fall{to{transform:translateY(120vh)}}
 
 /* หัวใจลอย */
-.heart{
+.heart-float{
   position:fixed;
   bottom:-20px;
   font-size:22px;
@@ -41,19 +41,22 @@ body{
 }
 @keyframes up{to{transform:translateY(-120vh)}}
 
-/* กล่อง */
-.wrap{
-  min-height:100vh;
-  padding:30px 15px;
+/* พื้นที่เลื่อน */
+.scroll-area{
   position:relative;
   z-index:2;
+  height:100vh;
+  overflow-y:auto;        /* ⭐ เลื่อนขึ้น–ลงได้ */
+  padding:30px 15px;
 }
+
+/* กล่อง */
 .card{
   background:rgba(255,255,255,.95);
   border-radius:40px;
   padding:30px;
   max-width:1000px;
-  margin:auto;
+  margin:40px auto;
   box-shadow:0 30px 60px rgba(255,160,190,.45);
 }
 
@@ -61,7 +64,7 @@ body{
 h1{text-align:center;margin-top:0}
 .sub{text-align:center;color:#8b5a6a;margin-bottom:25px}
 
-/* slider */
+/* slider รูป */
 .slider{
   display:flex;
   overflow-x:auto;
@@ -108,7 +111,7 @@ for(let i=0;i<40;i++){
   document.body.appendChild(s);
 
   let h=document.createElement("div");
-  h.className="heart";
+  h.className="heart-float";
   h.innerHTML="❤";
   h.style.left=Math.random()*100+"vw";
   h.style.animationDuration=4+Math.random()*4+"s";
@@ -116,13 +119,13 @@ for(let i=0;i<40;i++){
 }
 </script>
 
-<div class="wrap">
+<div class="scroll-area">
   <div class="card">
     <h1>ภาพที่เก็บหัวใจของเราไว้ทั้งหมด 📷</h1>
-    <div class="sub">บางรูปทำให้ยิ้ม บางรูปทำให้คิดถึง</div>
+    <div class="sub">บางภาพทำให้ยิ้ม บางภาพทำให้คิดถึง</div>
 
     <div class="slider">
-      <!-- 🖼️ รูป 30 รูป -->
+      <!-- 🖼️ รูป gallery1.jpg – gallery30.jpg -->
       <div class="slide"><img src="gallery1.jpg"></div>
       <div class="slide"><img src="gallery2.jpg"></div>
       <div class="slide"><img src="gallery3.jpg"></div>
