@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ออย & โฟวิน</title>
+<title>สำหรับคนพิเศษที่สุด</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
@@ -12,117 +12,128 @@
 body{
   margin:0;
   font-family:'Itim',cursive;
+  height:100vh;
   background:linear-gradient(180deg,#fff1f6,#ffe6ef);
   overflow:hidden;
+  color:#7a4a5a;
 }
 
-/* กลิตเตอร์ลอยลง */
+/* กลิตเตอร์ */
 .sparkle{
   position:fixed;
   top:-10px;
   width:6px;
   height:6px;
-  background:rgba(255,255,255,.9);
+  background:white;
   border-radius:50%;
-  animation:fall 7s linear infinite;
-  z-index:1;
+  opacity:.8;
+  animation:fall 8s linear infinite;
 }
-@keyframes fall{
-  from{transform:translateY(-10vh)}
-  to{transform:translateY(110vh)}
-}
+@keyframes fall{to{transform:translateY(120vh)}}
 
-/* หัวใจลอยขึ้น */
-.float-heart{
+/* หัวใจลอย */
+.heart{
   position:fixed;
   bottom:-20px;
-  font-size:22px;
+  font-size:24px;
   color:#ff8fb1;
-  animation:heartUp 6s linear infinite;
-  z-index:1;
+  animation:floatUp 6s linear infinite;
 }
-@keyframes heartUp{
-  from{transform:translateY(0)}
-  to{transform:translateY(-120vh)}
-}
+@keyframes floatUp{to{transform:translateY(-120vh)}}
 
-/* กล่องหลัก */
-.center{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+/* กล่องกลาง */
+.box{
   position:relative;
-  z-index:2; /* สำคัญ: ให้ปุ่มอยู่บนของลอย */
-}
-.card{
-  background:rgba(255,255,255,.92);
-  padding:40px 30px;
+  z-index:5;
+  background:rgba(255,255,255,.95);
+  width:90%;
+  max-width:380px;
+  padding:35px 30px 40px;
   border-radius:40px;
   text-align:center;
-  max-width:420px;
-  width:100%;
   box-shadow:0 30px 60px rgba(255,160,190,.45);
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 
-/* หัวใจตรงชื่อ */
-.heart{
-  font-size:34px;
-  cursor:pointer;
-  display:inline-block;
-  animation:pulse 2s infinite;
+/* หัวใจใหญ่ */
+.big-heart{
+  font-size:55px;
+  color:#ff7fa8;
+  animation:pulse 1.5s infinite;
 }
-.heart.active{transform:scale(1.7)}
 @keyframes pulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.15)}
+  50%{transform:scale(1.2)}
 }
 
-/* ข้อความ */
-h1{color:#7a4a5a;margin-bottom:6px}
-p{color:#8b5a6a;margin-top:0}
+h1{
+  margin:10px 0 5px;
+  font-size:26px;
+}
+.sub{
+  font-size:16px;
+  opacity:.8;
+  margin-bottom:20px;
+}
 
 /* ช่องรหัส */
 input{
   width:100%;
   padding:14px;
-  border-radius:25px;
-  border:2px solid #ffc0d9;
   font-size:18px;
   text-align:center;
-  margin-top:15px;
+  border-radius:20px;
+  border:2px solid #ffd1df;
+  outline:none;
+  font-family:'Itim';
+  margin-bottom:18px;
+}
+input:focus{
+  border-color:#ff8fb1;
 }
 
 /* ปุ่ม */
 button{
-  margin-top:20px;
-  padding:14px 35px;
+  width:100%;
+  padding:14px;
+  font-size:18px;
   border:none;
-  border-radius:30px;
-  background:linear-gradient(135deg,#ff9fc1,#ffb6d5);
+  border-radius:25px;
+  background:#ff8fb1;
   color:white;
-  font-size:20px;
+  font-family:'Itim';
   cursor:pointer;
   box-shadow:0 10px 25px rgba(255,150,190,.5);
+  transition:.3s;
 }
-button:hover{transform:scale(1.05)}
+button:hover{
+  background:#ff6f9f;
+  transform:scale(1.05);
+}
+
+/* ข้อความเตือน */
+.error{
+  margin-top:15px;
+  color:#ff5b8a;
+  display:none;
+}
 </style>
 </head>
 
 <body>
 
-<!-- สร้างกลิตเตอร์ + หัวใจ -->
 <script>
-for(let i=0;i<35;i++){
+for(let i=0;i<40;i++){
   let s=document.createElement("div");
   s.className="sparkle";
   s.style.left=Math.random()*100+"vw";
-  s.style.animationDelay=Math.random()*7+"s";
+  s.style.animationDelay=Math.random()*8+"s";
   document.body.appendChild(s);
 
   let h=document.createElement("div");
-  h.className="float-heart";
+  h.className="heart";
   h.innerHTML="❤";
   h.style.left=Math.random()*100+"vw";
   h.style.animationDuration=4+Math.random()*4+"s";
@@ -130,27 +141,29 @@ for(let i=0;i<35;i++){
 }
 </script>
 
-<div class="center">
-  <div class="card">
-    <h1>เว็บความทรงจำของเรา <span class="heart">💖</span></h1>
-    <p>ออย & โฟวิน</p>
+<div class="box">
+  <div class="big-heart">💗</div>
+  <h1>สำหรับคนพิเศษที่สุด</h1>
+  <div class="sub">ใส่รหัสหัวใจของเรา</div>
 
-    <input id="pass" type="password" placeholder="ใส่รหัสลับของเรา">
+  <!-- 🔐 รหัส -->
+  <input type="password" id="pass" placeholder="••••••" maxlength="6">
 
-    <button onclick="login()">เข้าสู่โลกของเรา</button>
-  </div>
+  <!-- ✅ ปุ่มไม่หาย -->
+  <button onclick="check()">เปิดความทรงจำ</button>
+
+  <div class="error" id="err">รหัสไม่ถูกต้องนะ 🤍</div>
 </div>
 
 <script>
-document.querySelector(".heart").onclick=function(){
-  this.classList.toggle("active");
-}
+function check(){
+  const correct = "061266"; // ⭐ เปลี่ยนรหัสตรงนี้
+  const input = document.getElementById("pass").value;
 
-function login(){
-  if(pass.value==="06122566"){   // 🔑 เปลี่ยนรหัสได้ตรงนี้
-    window.location.href="home.html";
+  if(input === correct){
+    window.location.href = "home.html"; // 👉 ไปหน้าเวลา
   }else{
-    alert("รหัสนี้ยังไม่ใช่ของเรา 🤍");
+    document.getElementById("err").style.display="block";
   }
 }
 </script>
