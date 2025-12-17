@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<title>เวลาที่เราคบกัน</title>
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<h2>⏳ เราคบกันมาแล้วนะ</h2>
-<div class="box" id="time"></div>
+<div class="center">
+  <div class="card">
+    <h2>เราคบกันมานานเท่าไหร่แล้วนะ</h2>
+    <p id="count"></p>
+    <img src="PUT_IMAGE.jpg" class="float" width="220">
+    <button onclick="back()">กลับ</button>
+  </div>
+</div>
 
 <script>
-const start = new Date("2023-12-20");
-const now = new Date();
-const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-document.getElementById("time").innerHTML =
-  diff + " วันแล้วนะ 🤍";
+setInterval(()=>{
+  let start=new Date("2023-12-20");
+  let now=new Date();
+  let diff=now-start;
+  let days=Math.floor(diff/86400000);
+  let y=Math.floor(days/365);
+  let m=Math.floor((days%365)/30);
+  let d=days%30;
+  let h=Math.floor((diff/3600000)%24);
+  count.innerText=`${y} ปี ${m} เดือน ${d} วัน ${h} ชั่วโมง`;
+},1000);
+function back(){location.href="home.html"}
 </script>
-
-<a href="home.html">⬅ กลับหน้าเมนู</a>
-
-</body>
-</html>
