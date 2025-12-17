@@ -2,19 +2,176 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>จดหมายถึงโฟวิน</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จดหมายของเรา</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Itim',cursive;
+  background:linear-gradient(180deg,#fff1f6,#ffe6ef);
+  color:#7a4a5a;
+  overflow:hidden;
+}
+
+/* กลิตเตอร์ */
+.sparkle{
+  position:fixed;
+  top:-10px;
+  width:6px;
+  height:6px;
+  background:rgba(255,255,255,.9);
+  border-radius:50%;
+  animation:fall 9s linear infinite;
+  z-index:1;
+}
+@keyframes fall{to{transform:translateY(120vh)}}
+
+/* หัวใจลอย */
+.heart-float{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  color:#ff8fb1;
+  animation:up 6s linear infinite;
+  z-index:1;
+}
+@keyframes up{to{transform:translateY(-120vh)}}
+
+/* กล่อง */
+.wrap{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* ซองจดหมาย */
+.envelope{
+  width:320px;
+  height:220px;
+  background:#ffd6e5;
+  border-radius:20px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 25px 50px rgba(255,150,190,.45);
+  transition:.6s;
+}
+.envelope::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:linear-gradient(135deg,transparent 50%,#ffc1d6 50%);
+  clip-path:polygon(0 0,100% 0,50% 55%);
+}
+.envelope p{
+  position:absolute;
+  bottom:18px;
+  width:100%;
+  text-align:center;
+  font-size:18px;
+}
+
+/* กระดาษ */
+.paper{
+  position:absolute;
+  width:300px;
+  height:0;
+  background:white;
+  top:20px;
+  left:10px;
+  border-radius:15px;
+  padding:0 20px;
+  overflow:hidden;
+  transition:.8s;
+  box-shadow:0 20px 40px rgba(255,150,190,.4);
+}
+
+/* เปิดแล้ว */
+.open .paper{
+  height:380px;
+  padding:25px 20px;
+}
+.open{
+  transform:translateY(-40px);
+}
+
+/* เนื้อหา */
+.paper h2{
+  text-align:center;
+  margin-top:0;
+}
+.paper .text{
+  font-size:17px;
+  line-height:1.7;
+  white-space:pre-line;
+}
+.sign{
+  text-align:right;
+  margin-top:20px;
+}
+</style>
 </head>
+
 <body>
 
-<h2>💌 ถึงโฟวิน</h2>
+<script>
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDelay=Math.random()*9+"s";
+  document.body.appendChild(s);
 
-<div class="box">
-<textarea placeholder="ขอบคุณที่อยู่เคียงกันกันมาตลอด 2ปี ถึงจะมีทะเลาะกันบ้าง แต่ก็ยังผ่านมาได้จนถึงทุกวันนี้ ขอบคุณที่ทำให้หงุดหงิดได้ตลอดเวลา 
-  แต่พี่ก็ยังน่ารักกับออยตั้งแต่วันแรกที่เรารู้จักกันเลยนะ ขอบคุณที่เข้าใจกันคอยดูแลกันมาตลอด อยากบอกว่ารักเธอมากๆนะ ขอให้เรารักกันแบบนี้ไปนานๆ รักเธอ"></textarea>
+  let h=document.createElement("div");
+  h.className="heart-float";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=4+Math.random()*4+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="wrap">
+  <div class="envelope" onclick="openLetter(this)">
+    <div class="paper">
+      <h2>ถึงคนที่ออยรัก 🤍</h2>
+      <div class="text">
+ขอบคุณที่อยู่เคียงกันกันมาตลอด 2 ปี  
+ถึงจะมีทะเลาะกันบ้าง  
+แต่ก็ยังผ่านมาได้จนถึงทุกวันนี้  
+
+ขอบคุณที่ทำให้หงุดหงิดได้ตลอดเวลา  
+แต่พี่ก็ยังน่ารักกับออย  
+ตั้งแต่วันแรกที่เรารู้จักกันเลยนะ  
+
+ขอบคุณที่เข้าใจกัน  
+คอยดูแลกันมาตลอด  
+อยากบอกว่ารักเธอมาก ๆ นะ  
+
+ขอให้เรารักกันแบบนี้ไปนาน ๆ  
+รักเธอ 🤍
+      </div>
+      <div class="sign">
+        — ออย
+      </div>
+    </div>
+    <p>กดเพื่อเปิดจดหมาย 💌</p>
+  </div>
 </div>
 
-<a href="home.html">⬅ กลับหน้าเมนู</a>
+<script>
+function openLetter(el){
+  el.classList.toggle("open");
+}
+</script>
 
 </body>
 </html>
