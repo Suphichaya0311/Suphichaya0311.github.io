@@ -1,18 +1,140 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เว็บความทรงจำของเรา</title>
+
+<!-- ฟอนต์ -->
+<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Itim',cursive;
+  background:linear-gradient(180deg,#fff0f6,#ffe6ef);
+  overflow:hidden;
+}
+
+/* กลิตเตอร์ */
+.sparkle{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:rgba(255,182,193,.8);
+  border-radius:50%;
+  animation:fall 6s linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh);opacity:0}
+  30%{opacity:1}
+  100%{transform:translateY(110vh);opacity:0}
+}
+
+/* กล่องหลัก */
+.center{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+.card{
+  background:rgba(255,255,255,.9);
+  padding:40px 30px;
+  border-radius:35px;
+  text-align:center;
+  max-width:420px;
+  width:100%;
+  box-shadow:0 30px 60px rgba(255,150,190,.45);
+  position:relative;
+}
+
+/* หัวใจ */
+.heart{
+  font-size:32px;
+  cursor:pointer;
+  display:inline-block;
+  animation:float 3s ease-in-out infinite;
+}
+.heart.active{
+  transform:scale(1.6);
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* ข้อความ */
+h1{color:#7a4a5a;margin-bottom:5px}
+p{color:#8b5a6a;margin-top:0}
+
+/* ช่องรหัส */
+input{
+  width:100%;
+  padding:14px;
+  border-radius:25px;
+  border:2px solid #ffc0d9;
+  font-size:18px;
+  text-align:center;
+  margin-top:15px;
+  outline:none;
+}
+
+/* ปุ่ม */
+button{
+  margin-top:20px;
+  padding:14px 35px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff9fc1,#ffb6d5);
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(255,150,190,.5);
+}
+button:hover{transform:scale(1.05)}
+</style>
+</head>
+
+<body>
+
+<!-- กลิตเตอร์ -->
+<script>
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDelay=Math.random()*6+"s";
+  document.body.appendChild(s);
+}
+</script>
+
 <div class="center">
   <div class="card">
     <h1>เว็บความทรงจำของเรา <span class="heart">💖</span></h1>
     <p>ออย & โฟวิน</p>
-    <input id="pass" placeholder="ใส่รหัส">
-    <button onclick="login()">เข้าสู่เว็บ</button>
+
+    <input id="pass" type="password" placeholder="ใส่รหัสลับของเรา">
+
+    <button onclick="login()">เข้าสู่โลกของเรา</button>
   </div>
 </div>
 
 <script>
+document.querySelector(".heart").onclick=function(){
+  this.classList.toggle("active");
+}
+
 function login(){
-  if(pass.value==="06122566"){ // เปลี่ยนรหัสตรงนี้
-    location.href="home.html";
-  }else alert("รหัสไม่ถูกต้อง");
+  if(pass.value==="06122566"){ // 🔑 เปลี่ยนรหัสตรงนี้
+    window.location.href="home.html";
+  }else{
+    alert("รหัสนี้ยังไม่ใช่ของเรา 🤍");
+  }
 }
 </script>
-<script src="script.js"></script>
+
+</body>
+</html>
