@@ -1,21 +1,43 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<title>ปฏิทินของเรา</title>
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="center">
+  <h2>ปฏิทินความทรงจำ</h2>
 
-<h2>📅 เดือนแห่งความทรงจำ</h2>
+  <button onclick="showPic('JAN.jpg')">ธันวาคม 2566</button>
+  <button onclick="showPic('JAN.jpg')">มกราคม 2567</button>
+  <button onclick="showPic('FEB.jpg')">กุมภาพันธ์ 2567</button>
+   <button onclick="showPic('JAN.jpg')">มีนาคม 2567</button>
+  <button onclick="showPic('FEB.jpg')">เมษายน 2567</button>
+   <button onclick="showPic('JAN.jpg')">พฤษภาคม 2567</button>
+  <button onclick="showPic('FEB.jpg')">มิถุนายน 2567</button>
+   <button onclick="showPic('JAN.jpg')">กรกฏาคม 2567</button>
+  <button onclick="showPic('FEB.jpg')">สิงหาคม 2567</button>
+   <button onclick="showPic('JAN.jpg')">กันยายน 2567</button>
+  <button onclick="showPic('FEB.jpg')">ตุลาคม 2567</button>
+   <button onclick="showPic('JAN.jpg')">พฤศจิกายน 2567</button>
+  <button onclick="showPic('FEB.jpg')">ธันวาคม 2567</button>
+  <button onclick="showPic('JAN.jpg')">มกราคม 2568</button>
+  <button onclick="showPic('FEB.jpg')">กุมภาพันธ์ 2568</button>
+   <button onclick="showPic('JAN.jpg')">มีนาคม 2568</button>
+  <button onclick="showPic('FEB.jpg')">เมษายน 2568</button>
+   <button onclick="showPic('JAN.jpg')">พฤษภาคม 2568</button>
+  <button onclick="showPic('FEB.jpg')">มิถุนายน 2568</button>
+   <button onclick="showPic('JAN.jpg')">กรกฏาคม 2568</button>
+  <button onclick="showPic('FEB.jpg')">สิงหาคม 2568</button>
+   <button onclick="showPic('JAN.jpg')">กันยายน 2568</button>
+  <button onclick="showPic('FEB.jpg')">ตุลาคม 2568</button>
+   <button onclick="showPic('JAN.jpg')">พฤศจิกายน 2568</button>
+  <button onclick="showPic('FEB.jpg')">ธันวาคม 2568</button>
 
-<div class="box">
-<p>ธันวาคม – เริ่มคบกัน ❤️</p>
-<p>มกราคม – เดินเล่นด้วยกัน</p>
-<p>กุมภาพันธ์ – วันวาเลนไทน์</p>
+
+  <button onclick="back()">กลับ</button>
 </div>
 
-<a href="home.html">⬅ กลับหน้าเมนู</a>
+<!-- Popup -->
+<div id="popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);justify-content:center;align-items:center">
+  <img id="popupImg" style="width:300px;border-radius:30px" onclick="closePic()">
+</div>
 
-</body>
-</html>
+<script src="script.js"></script>
+<script>
+function back(){location.href="home.html"}
+</script>
