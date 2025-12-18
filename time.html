@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -17,26 +18,6 @@ body{
   overflow:hidden;
 }
 
-/* 🔝 ปุ่มกลับหน้าแรก */
-.home-btn{
-  position:fixed;
-  top:15px;
-  right:15px;
-  z-index:50;
-  border:none;
-  background:#ff8fb1;
-  color:white;
-  padding:10px 18px;
-  border-radius:25px;
-  font-family:'Itim';
-  cursor:pointer;
-  box-shadow:0 10px 25px rgba(255,150,190,.5);
-}
-.home-btn:hover{
-  background:#ff6f9f;
-  transform:scale(1.05);
-}
-
 /* กลิตเตอร์ */
 .sparkle{
   position:fixed;
@@ -47,7 +28,6 @@ body{
   border-radius:50%;
   animation:fall 8s linear infinite;
   z-index:1;
-  pointer-events:none;
 }
 @keyframes fall{
   to{transform:translateY(120vh)}
@@ -61,7 +41,6 @@ body{
   color:#ff8fb1;
   animation:up 6s linear infinite;
   z-index:1;
-  pointer-events:none;
 }
 @keyframes up{
   to{transform:translateY(-120vh)}
@@ -140,11 +119,6 @@ h1{
 
 <body>
 
-<!-- 🔝 ปุ่มกลับหน้าแรก -->
-<button class="home-btn" onclick="location.href='home.html'">
-  ⌂ หน้าแรก
-</button>
-
 <script>
 /* สร้างกลิตเตอร์ + หัวใจ */
 for(let i=0;i<40;i++){
@@ -178,6 +152,8 @@ for(let i=0;i<40;i++){
     </div>
 
     <div class="photo">
+      <!-- 🖼️ ใส่รูปความทรงจำ -->
+      <!-- เปลี่ยนชื่อไฟล์รูปได้ เช่น our.jpg -->
       <img src="photo1.jpg" alt="ความทรงจำของเรา">
     </div>
 
