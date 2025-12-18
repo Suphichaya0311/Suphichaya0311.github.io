@@ -17,12 +17,12 @@ body{
   overflow:hidden;
 }
 
-/* 🔝 ปุ่มกลับหน้าแรกมุมขวาบน */
+/* 🔝 ปุ่มกลับหน้าแรก */
 .home-btn{
   position:fixed;
   top:15px;
   right:15px;
-  z-index:30;
+  z-index:50;
   border:none;
   background:#ff8fb1;
   color:white;
@@ -31,27 +31,35 @@ body{
   font-family:'Itim';
   cursor:pointer;
   box-shadow:0 10px 25px rgba(255,150,190,.5);
-  transition:.3s;
 }
 .home-btn:hover{
   background:#ff6f9f;
   transform:scale(1.05);
 }
 
-/* เอฟเฟกต์ลอย */
-.sparkle,.heart{
-  position:fixed;
-  z-index:1;
-}
+/* ✨ กลิตเตอร์ */
 .sparkle{
-  top:-10px;width:6px;height:6px;
-  background:white;border-radius:50%;
+  position:fixed;
+  top:-10px;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
   animation:fall 8s linear infinite;
+  z-index:10;
+  pointer-events:none;
 }
 @keyframes fall{to{transform:translateY(120vh)}}
+
+/* ❤️ หัวใจลอย (แก้แล้ว) */
 .heart{
-  bottom:-20px;font-size:22px;color:#ff8fb1;
+  position:fixed;
+  bottom:-20px;
+  font-size:26px;
+  color:#ff8fb1;
   animation:up 6s linear infinite;
+  z-index:11;
+  pointer-events:none;
 }
 @keyframes up{to{transform:translateY(-120vh)}}
 
@@ -59,9 +67,9 @@ body{
 .scroll{
   height:100vh;
   overflow-y:auto;
-  padding:60px 15px 30px; /* เผื่อที่ให้ปุ่มด้านบน */
+  padding:70px 15px 30px;
   position:relative;
-  z-index:2;
+  z-index:20;
 }
 
 /* กล่องหลัก */
@@ -74,7 +82,7 @@ body{
   box-shadow:0 30px 60px rgba(255,160,190,.45);
 }
 
-/* ส่วนหัวเดือน */
+/* ส่วนหัว */
 .header{
   display:flex;
   justify-content:space-between;
@@ -122,7 +130,7 @@ button:hover{background:#ff8fb1}
   display:none;
   align-items:center;
   justify-content:center;
-  z-index:40;
+  z-index:60;
 }
 .popupBox{
   background:white;
@@ -165,7 +173,7 @@ for(let i=0;i<35;i++){
   h.className="heart";
   h.innerHTML="❤";
   h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=4+Math.random()*4+"s";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
   document.body.appendChild(h);
 }
 </script>
