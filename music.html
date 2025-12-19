@@ -1,256 +1,54 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เพลงของเรา 🤍</title>
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+<div class="feel">
 
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Itim',cursive;
-  background:linear-gradient(180deg,#fff1f6,#ffe6ef);
-  color:#7a4a5a;
-}
-
-/* ปุ่มกลับ */
-.back{
-  position:fixed;
-  top:15px;
-  right:15px;
-  z-index:200;
-  background:#ff8fb1;
-  color:white;
-  border:none;
-  padding:10px 18px;
-  border-radius:25px;
-  cursor:pointer;
-}
-
-/* เอฟเฟกต์ */
-.sparkle,.heart{
-  position:fixed;
-  z-index:1;
-}
-.sparkle{
-  top:-10px;width:6px;height:6px;
-  background:white;border-radius:50%;
-  animation:fall 8s linear infinite;
-}
-@keyframes fall{to{transform:translateY(120vh)}}
-.heart{
-  bottom:-20px;font-size:22px;color:#ff8fb1;
-  animation:up 6s linear infinite;
-}
-@keyframes up{to{transform:translateY(-120vh)}}
-
-/* scroll */
-.scroll{
-  height:100vh;
-  overflow-y:auto;
-  padding:90px 20px 80px;
-  position:relative;
-  z-index:2;
-}
-
-/* เพลง */
-.music{
-  max-width:600px;
-  margin:0 auto 25px;
-  border-radius:25px;
-  overflow:hidden;
-  box-shadow:0 20px 40px rgba(255,160,190,.4);
-}
-
-/* ประโยคหลัก */
-.main-line{
-  text-align:center;
-  font-size:22px;
-  color:#ff5f95;
-  margin:30px auto;
-  max-width:600px;
-}
-
-/* รูป */
-.slider{
-  max-width:320px;
-  margin:30px auto;
-  overflow:hidden;
-  border-radius:25px;
-  box-shadow:0 20px 40px rgba(255,150,190,.4);
-}
-.slides{
-  display:flex;
-  transition:1s ease;
-}
-.slides img{
-  width:320px;
-  height:220px;
-  object-fit:cover;
-}
-
-/* ข้อความ */
-.feel{
-  max-width:600px;
-  margin:50px auto;
-  font-size:18px;
-  line-height:1.9;
-  text-align:center;
-}
-.line{
-  display:none;
-  margin:40px 0;
-  color:#ff6f9f;
-  animation:fadeUp 1.5s ease forwards;
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}
-}
-
-/* ฉากจบ */
-.ending{
-  position:fixed;
-  inset:0;
-  background:black;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  opacity:0;
-  pointer-events:none;
-  z-index:300;
-  transition:opacity 3s ease;
-}
-.ending.show{
-  opacity:0.85;
-}
-.ending-text{
-  color:white;
-  font-size:32px;
-  text-align:center;
-  line-height:1.6;
-  animation:fadeUp 3s ease forwards;
-}
-</style>
-</head>
-
-<body>
-
-<button class="back" onclick="location.href='home.html'">⬅ หน้าแรก</button>
-
-<!-- เอฟเฟกต์ -->
-<script>
-for(let i=0;i<30;i++){
-  let s=document.createElement("div");
-  s.className="sparkle";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDelay=Math.random()*8+"s";
-  document.body.appendChild(s);
-
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=4+Math.random()*4+"s";
-  document.body.appendChild(h);
-}
-</script>
-
-<div class="scroll">
-
-  <!-- เพลง -->
-  <div class="music">
-    <div id="player"></div>
+  <!-- 1.24 -->
+  <div class="line" data-time="84">
+    ยิ่งมีกันและกันมากแค่ไหน<br>
+    มีเพียงคำว่ารักที่สองเรานั้นเข้าใจ<br>
+    รักเพียงเธอและตลอดไป โฮ้ โน้ว<br>
+    แค่เธอกับฉัน
   </div>
 
-  <div class="main-line">
-    My heart is and always will be yours.
+  <!-- 1.56 -->
+  <div class="line" data-time="116">
+    และนับจากนี้ไป ทุกเรื่องราวที่ได้ฟัง<br>
+    คำพูดทุกถ้อยคำ ที่คอยย้ำเตือนใจ<br>
+    ไม่ว่าจะไกลสักเท่าไร
   </div>
 
-  <!-- รูป 20 รูป -->
-  <div class="slider">
-    <div class="slides" id="slides">
-      <!-- song1.jpg ถึง song20.jpg -->
-      <script>
-        for(let i=1;i<=20;i++){
-          document.write(`<img src="song${i}.jpg">`);
-        }
-      </script>
-    </div>
+  <!-- 2.18 -->
+  <div class="line" data-time="138">
+    เธอทำให้ฉันรู้และเข้าใจคำว่าสองเรา<br>
+    ไม่ว่าจะร้อนหรือว่าจะหนาวก็ไม่กลัว<br>
+    มีเธอที่รักข้างในจิตใจ<br>
+    ให้ฉันก้าวเดินต่อไปต่อจากนี้ โน้ว<br>
+    เพียงมีเธอคนดีอย่างนี้ ไม่ไหวหวั่น
   </div>
 
-  <!-- ข้อความ -->
-  <div class="feel">
-    <div class="line" data-time="41">
-      เธอทำให้ฉันรู้และเข้าใจคำว่าสองเรา<br>
-      ไม่ว่าจะร้อนหรือว่าจะหนาวก็ไม่กลัว<br>
-      มีเธอที่รักข้างในจิตใจ<br>
-      ให้ฉันก้าวเดินต่อไปต่อจากนี้ โน้ว<br><br>
-      เธอและฉัน จับมือเคียงกันนับจากนี้<br>
-      ผ่านความเดียวดายที่สองเรานั้นเคยมี<br>
-      เมื่อมีเธอคนที่แสนดีอยู่ตรงนี้ โน้ว
-    </div>
-
-    <div class="line" data-time="80">เพลงนี้…เหมือนเราสองคน</div>
-    <div class="line" data-time="110">บางวันที่เหนื่อย แค่มีเธอก็พอแล้ว</div>
-    <div class="line" data-time="145">เวลาผ่านไป แต่ความรู้สึกไม่เคยหาย</div>
-    <div class="line" data-time="175">ขอบคุณที่น่ารักกับออยมาตลอด</div>
-    <div class="line" data-time="205">รักเธอมากขึ้นทุกวัน</div>
-    <div class="line" data-time="235">รักเธอน้าาาาาาา ☀</div>
+  <!-- 2.38 -->
+  <div class="line" data-time="158">
+    เธอและฉัน<br>
+    จับมือเคียงกันนับจากนี้<br>
+    ผ่านความเดียวดายที่สองเรานั้นเคยมี<br>
+    เมื่อมีเธอคนที่แสนดีอยู่ตรงนี้ โน้ว
   </div>
+
+  <!-- 2.59 -->
+  <div class="line" data-time="179">
+    มากกว่านั้น<br>
+    ยิ่งมีกันและกันมากแค่ไหน<br>
+    มีเพียงคำว่ารักที่สองเรานั้นเข้าใจ<br>
+    รักเพียงเธอและตลอดไป โฮ้ โน้ว<br>
+    แค่เธอกับฉัน<br>
+    ฮ้าอา อา<br>
+    ฮ้า อา
+  </div>
+
+  <!-- ===== กลุ่มความรู้สึกเดิม เริ่มตอน 4.00 ===== -->
+  <div class="line" data-time="240">เพลงนี้…เหมือนเราสองคน</div>
+  <div class="line" data-time="246">บางวันที่เหนื่อย แค่มีเธอก็พอแล้ว</div>
+  <div class="line" data-time="252">เวลาผ่านไป แต่ความรู้สึกไม่เคยหาย</div>
+  <div class="line" data-time="258">ขอบคุณที่น่ารักกับออยมาตลอด</div>
+  <div class="line" data-time="264">รักเธอมากขึ้นทุกวัน</div>
+  <div class="line" data-time="270">รักเธอน้าาาาาาา ☀</div>
 
 </div>
-
-<!-- ฉากจบ -->
-<div class="ending" id="ending">
-  <div class="ending-text">
-    อยากมีเธอแบบนี้<br>
-    ตลอดไปเลยนะ 🤍
-  </div>
-</div>
-
-<!-- YouTube API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-let player;
-function onYouTubeIframeAPIReady(){
-  player = new YT.Player('player',{
-    videoId:'MG8np3qtgJY',
-    playerVars:{autoplay:1,controls:1},
-    events:{ onReady:onReady }
-  });
-}
-
-function onReady(){
-  setInterval(checkTime,500);
-}
-
-function checkTime(){
-  const t = player.getCurrentTime();
-  const d = player.getDuration();
-
-  document.querySelectorAll('.line').forEach(line=>{
-    if(t >= Number(line.dataset.time) && line.style.display!=="block"){
-      line.style.display="block";
-      line.scrollIntoView({behavior:'smooth',block:'center'});
-    }
-  });
-
-  /* ใกล้จบเพลง */
-  if(d && d - t < 8){
-    document.getElementById("ending").classList.add("show");
-  }
-}
-
-/* รูปเลื่อน */
-let i=0;
-setInterval(()=>{
-  document.getElementById("slides")
-    .style.transform=`translateX(${-320*(i++%20)}px)`;
-},4500);
-</script>
-
-</body>
-</html>
