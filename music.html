@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>เพลงของเรา 🤍</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 <style>
@@ -14,63 +13,67 @@ body{
   font-family:'Itim',cursive;
   background:linear-gradient(180deg,#fff1f6,#ffe6ef);
   color:#7a4a5a;
-  overflow:hidden;
 }
 
 /* ปุ่มกลับ */
-.back-btn{
+.back{
   position:fixed;
   top:15px;
   right:15px;
   z-index:100;
-  border:none;
   background:#ff8fb1;
-  color:#fff;
+  color:white;
+  border:none;
   padding:10px 18px;
   border-radius:25px;
-  font-family:'Itim';
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(255,150,190,.4);
 }
 
 /* เอฟเฟกต์ */
-.sparkle{position:fixed;top:-10px;width:6px;height:6px;background:white;border-radius:50%;animation:fall 8s linear infinite;z-index:1}
+.sparkle,.heart{
+  position:fixed;
+  z-index:1;
+}
+.sparkle{
+  top:-10px;width:6px;height:6px;
+  background:white;border-radius:50%;
+  animation:fall 8s linear infinite;
+}
 @keyframes fall{to{transform:translateY(120vh)}}
-
-.heart{position:fixed;bottom:-20px;font-size:22px;color:#ff8fb1;animation:up 6s linear infinite;z-index:1}
+.heart{
+  bottom:-20px;font-size:22px;color:#ff8fb1;
+  animation:up 6s linear infinite;
+}
 @keyframes up{to{transform:translateY(-120vh)}}
 
-/* กล่องหลัก */
-.container{
-  padding:80px 20px 40px;
-  text-align:center;
+/* scroll */
+.scroll{
+  height:100vh;
+  overflow-y:auto;
+  padding:90px 20px 50px;
   position:relative;
   z-index:2;
 }
 
-/* ข้อความ */
-.fade{
-  opacity:0;
-  animation:fadeIn 2s forwards;
-}
-.delay1{animation-delay:1s}
-.delay2{animation-delay:2.5s}
-.delay3{animation-delay:4s}
-
-@keyframes fadeIn{
-  to{opacity:1}
-}
-
 /* เพลง */
-.music-box{
+.music{
   max-width:600px;
-  margin:25px auto;
-  border-radius:20px;
+  margin:0 auto 30px;
+  border-radius:25px;
   overflow:hidden;
-  box-shadow:0 20px 40px rgba(255,160,190,.35);
+  box-shadow:0 20px 40px rgba(255,160,190,.4);
 }
 
-/* slider */
+/* ประโยคหลัก */
+.main-line{
+  text-align:center;
+  font-size:22px;
+  color:#ff5f95;
+  margin:30px auto;
+  max-width:600px;
+}
+
+/* รูป */
 .slider{
   max-width:320px;
   margin:30px auto;
@@ -80,19 +83,37 @@ body{
 }
 .slides{
   display:flex;
-  transition:transform 1s ease;
+  transition:1s ease;
 }
 .slides img{
   width:320px;
   height:220px;
   object-fit:cover;
 }
+
+/* เนื้อเพลง */
+.lyrics{
+  max-width:600px;
+  margin:40px auto;
+  font-size:18px;
+  line-height:1.9;
+}
+.line{
+  opacity:.25;
+  margin:25px 0;
+  transition:1s;
+}
+.line.active{
+  opacity:1;
+  color:#ff6f9f;
+  transform:scale(1.03);
+}
 </style>
 </head>
 
 <body>
 
-<button class="back-btn" onclick="location.href='home.html'">⬅ หน้าแรก</button>
+<button class="back" onclick="location.href='home.html'">⬅ หน้าแรก</button>
 
 <script>
 for(let i=0;i<30;i++){
@@ -111,53 +132,65 @@ for(let i=0;i<30;i++){
 }
 </script>
 
-<div class="container">
-  <h1 class="fade delay1">เพลงของเรา 🤍</h1>
-
-  <p class="fade delay2">
-    My heart is and always will be yours.
-  </p>
+<div class="scroll">
 
   <!-- เพลง -->
-  <div class="music-box fade delay3">
-    <iframe width="100%" height="215"
-      src="https://www.youtube.com/embed/MG8np3qtgJY?autoplay=1&controls=1&rel=0"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
+  <div class="music">
+    <iframe id="player" width="100%" height="215"
+      src="https://www.youtube.com/embed/MG8np3qtgJY?enablejsapi=1"
+      frameborder="0" allow="autoplay"></iframe>
   </div>
 
-  <!-- รูปเลื่อนอัตโนมัติ -->
+  <!-- ประโยคหลัก -->
+  <div class="main-line">
+    My heart is and always will be yours.
+  </div>
+
+  <!-- รูป -->
   <div class="slider">
     <div class="slides" id="slides">
-      <img src="song1.jpg">
-      <img src="song2.jpg">
-      <img src="song3.jpg">
-      <img src="song4.jpg">
-      <img src="song5.jpg">
-      <img src="song6.jpg">
-      <img src="song7.jpg">
-      <img src="song8.jpg">
-      <img src="song9.jpg">
+      <img src="song1.jpg"><img src="song2.jpg"><img src="song3.jpg">
+      <img src="song4.jpg"><img src="song5.jpg"><img src="song6.jpg">
+      <img src="song7.jpg"><img src="song8.jpg"><img src="song9.jpg">
       <img src="song10.jpg">
     </div>
   </div>
 
-  <p class="fade delay3">
-    ถ้าวันไหนเธอเหนื่อย  
-    กลับมาเปิดหน้านี้นะ  
-    อย่างน้อย…เธอจะรู้ว่าเคยมีใครรักเธอมากแค่ไหน
-  </p>
+  <!-- เนื้อเพลง -->
+  <div class="lyrics" id="lyrics">
+    <!-- 🔴 วางเนื้อเพลงจริงของออยตรงนี้ -->
+    <div class="line">[มีเรื่องราวมากมาย ที่ไม่มีใครได้ฟัง คำพูดนับร้อยพัน]</div>
+    <div class="line">[ที่ต้องการเอื้อนเอ่ย ไม่ว่าจะนานซักเท่าไหร่]</div>
+    <div class="line">[ยังยืนยันคำเดิมเสมอ ไม่เคยเปลี่ยน]</div>
+    <div class="line">[เธอทำให้ฉันรู้และเข้าใจคำว่าสองเรา]</div>
+    <div class="line">[ไม่ว่าจะร้อนหรือว่าจะหนาวก็ไม่กลัว]</div>
+    <div class="line">[ใส่เนื้อเพลงบรรทัดที่ 2]</div>
+    <div class="line">[ใส่เนื้อเพลงบรรทัดที่ 3]</div>
+    <div class="line">[ใส่เนื้อเพลงบรรทัดที่ 4]</div>
+  </div>
+
 </div>
 
 <script>
-let index=0;
-const slides=document.getElementById("slides");
+/* รูปเลื่อน */
+let i=0;
 setInterval(()=>{
-  index=(index+1)%10;
-  slides.style.transform=`translateX(${-320*index}px)`;
-},5000); // เปลี่ยนรูปทุก 5 วิ (ช้า ๆ เหมือนความทรงจำ)
+  document.getElementById("slides")
+    .style.transform=`translateX(${-320*(i++%10)}px)`;
+},5000);
+
+/* ซิงก์ข้อความตามเวลาเพลง (ตัวอย่างเวลา) */
+const lines=document.querySelectorAll(".line");
+const times=[20,29,36,41,47]; // ⏱️ วินาทีของแต่ละบรรทัด (ออยแก้ได้)
+
+let current=0;
+setInterval(()=>{
+  if(current<lines.length){
+    lines[current].classList.add("active");
+    lines[current].scrollIntoView({behavior:"smooth",block:"center"});
+    current++;
+  }
+},20000);
 </script>
 
 </body>
