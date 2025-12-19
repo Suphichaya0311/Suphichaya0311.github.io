@@ -20,7 +20,7 @@ body{
   position:fixed;
   top:15px;
   right:15px;
-  z-index:100;
+  z-index:200;
   background:#ff8fb1;
   color:white;
   border:none;
@@ -50,7 +50,7 @@ body{
 .scroll{
   height:100vh;
   overflow-y:auto;
-  padding:90px 20px 60px;
+  padding:90px 20px 80px;
   position:relative;
   z-index:2;
 }
@@ -91,23 +91,47 @@ body{
   object-fit:cover;
 }
 
-/* ข้อความความรู้สึก */
+/* ข้อความ */
 .feel{
   max-width:600px;
-  margin:40px auto;
+  margin:50px auto;
   font-size:18px;
   line-height:1.9;
   text-align:center;
 }
 .line{
-  margin:35px 0;
-  opacity:.35;
-  transition:1.2s;
-}
-.line.show{
-  opacity:1;
+  display:none;
+  margin:40px 0;
   color:#ff6f9f;
-  transform:scale(1.04);
+  animation:fadeUp 1.5s ease forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+/* ฉากจบ */
+.ending{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  z-index:300;
+  transition:opacity 3s ease;
+}
+.ending.show{
+  opacity:0.85;
+}
+.ending-text{
+  color:white;
+  font-size:32px;
+  text-align:center;
+  line-height:1.6;
+  animation:fadeUp 3s ease forwards;
 }
 </style>
 </head>
@@ -116,6 +140,7 @@ body{
 
 <button class="back" onclick="location.href='home.html'">⬅ หน้าแรก</button>
 
+<!-- เอฟเฟกต์ -->
 <script>
 for(let i=0;i<30;i++){
   let s=document.createElement("div");
@@ -137,57 +162,94 @@ for(let i=0;i<30;i++){
 
   <!-- เพลง -->
   <div class="music">
-    <iframe width="100%" height="215"
-      src="https://www.youtube.com/embed/MG8np3qtgJY?autoplay=1"
-      frameborder="0" allow="autoplay"></iframe>
+    <div id="player"></div>
   </div>
 
-  <!-- ประโยคหลัก -->
   <div class="main-line">
     My heart is and always will be yours.
   </div>
 
-  <!-- รูป -->
+  <!-- รูป 20 รูป -->
   <div class="slider">
     <div class="slides" id="slides">
-      <img src="song1.jpg"><img src="song2.jpg"><img src="song3.jpg">
-      <img src="song4.jpg"><img src="song5.jpg"><img src="song6.jpg">
-      <img src="song7.jpg"><img src="song8.jpg"><img src="song9.jpg">
-      <img src="song10.jpg">
+      <!-- song1.jpg ถึง song20.jpg -->
+      <script>
+        for(let i=1;i<=20;i++){
+          document.write(`<img src="song${i}.jpg">`);
+        }
+      </script>
     </div>
   </div>
 
-  <!-- ข้อความแทนเนื้อเพลง -->
-  <div class="feel" id="feel">
-    <div class="line">เพลงนี้…เหมือนเราสองคน</div>
-    <div class="line">บางวันที่เหนื่อย แค่มีเธอก็พอแล้ว</div>
-    <div class="line">เวลาผ่านไป แต่ความรู้สึกไม่เคยหาย</div>
-    <div class="line">ขอบคุณที่น่ารักกับออยมาตลอด</div>
-    <div class="line">รักเธอมากขึ้นทุกวัน</div>
-    <div class="line">Loving you never was an option – it was necessity.</div>
-    <div class="line">รักเธอน้าาาาาาา ☀</div>
+  <!-- ข้อความ -->
+  <div class="feel">
+    <div class="line" data-time="41">
+      เธอทำให้ฉันรู้และเข้าใจคำว่าสองเรา<br>
+      ไม่ว่าจะร้อนหรือว่าจะหนาวก็ไม่กลัว<br>
+      มีเธอที่รักข้างในจิตใจ<br>
+      ให้ฉันก้าวเดินต่อไปต่อจากนี้ โน้ว<br><br>
+      เธอและฉัน จับมือเคียงกันนับจากนี้<br>
+      ผ่านความเดียวดายที่สองเรานั้นเคยมี<br>
+      เมื่อมีเธอคนที่แสนดีอยู่ตรงนี้ โน้ว
+    </div>
+
+    <div class="line" data-time="80">เพลงนี้…เหมือนเราสองคน</div>
+    <div class="line" data-time="110">บางวันที่เหนื่อย แค่มีเธอก็พอแล้ว</div>
+    <div class="line" data-time="145">เวลาผ่านไป แต่ความรู้สึกไม่เคยหาย</div>
+    <div class="line" data-time="175">ขอบคุณที่น่ารักกับออยมาตลอด</div>
+    <div class="line" data-time="205">รักเธอมากขึ้นทุกวัน</div>
+    <div class="line" data-time="235">รักเธอน้าาาาาาา ☀</div>
   </div>
 
 </div>
 
+<!-- ฉากจบ -->
+<div class="ending" id="ending">
+  <div class="ending-text">
+    อยากมีเธอแบบนี้<br>
+    ตลอดไปเลยนะ 🤍
+  </div>
+</div>
+
+<!-- YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
+let player;
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('player',{
+    videoId:'MG8np3qtgJY',
+    playerVars:{autoplay:1,controls:1},
+    events:{ onReady:onReady }
+  });
+}
+
+function onReady(){
+  setInterval(checkTime,500);
+}
+
+function checkTime(){
+  const t = player.getCurrentTime();
+  const d = player.getDuration();
+
+  document.querySelectorAll('.line').forEach(line=>{
+    if(t >= Number(line.dataset.time) && line.style.display!=="block"){
+      line.style.display="block";
+      line.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+  });
+
+  /* ใกล้จบเพลง */
+  if(d && d - t < 8){
+    document.getElementById("ending").classList.add("show");
+  }
+}
+
 /* รูปเลื่อน */
 let i=0;
 setInterval(()=>{
   document.getElementById("slides")
-    .style.transform=`translateX(${-320*(i++%10)}px)`;
-},5000);
-
-/* ข้อความค่อย ๆ โผล่ */
-const lines=document.querySelectorAll(".line");
-let index=0;
-setInterval(()=>{
-  if(index<lines.length){
-    lines[index].classList.add("show");
-    lines[index].scrollIntoView({behavior:"smooth",block:"center"});
-    index++;
-  }
-},6000);
+    .style.transform=`translateX(${-320*(i++%20)}px)`;
+},4500);
 </script>
 
 </body>
